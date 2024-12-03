@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --color-bg: #021a23;
+    --color-text: #e7f1f2;
+    --color-accent: #7a9e7e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.logo-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: logoEntrance 4s forwards;
+    transition: all 0.5s ease;
+}
+
+@keyframes logoEntrance {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#logo {
+    width: 100%;
+    height: auto;
+    transition: all 0.5s ease;
+}
+
+.login-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    cursor: pointer;
+    opacity: 0;
+    animation: buttonAppear 1s 4s forwards;
+}
+
+@keyframes buttonAppear {
+    to {
+        opacity: 1;
+    }
+}
+
+.login-text {
+    font-size: 1.55rem; /* Reduced by 2 more points */
+    background: linear-gradient(45deg, var(--color-text), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientAnimation 3s linear infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.arrow {
+    margin-left: 10px;
+    font-size: 1.75rem; /* Kept the same size */
+    color: var(--color-text);
+    animation: arrowAnimation 1s linear infinite;
+}
+
+@keyframes arrowAnimation {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.form-container.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.form-box {
+    width: 100%;
+    padding: 40px;
+    background: rgba(231, 241, 242, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.form-box.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.form-box h2 {
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-box form input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(231, 241, 242, 0.2);
+    color: var(--color-text);
+    outline: none;
+}
+
+.form-box form input::placeholder {
+    color: rgba(231, 241, 242, 0.7);
+}
+
+.form-box form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-box form button:hover {
+    background: var(--color-text);
+}
+
+.form-box p {
+    color: var(--color-text);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-box p span {
+    color: var(--color-accent);
+    cursor: pointer;
+}
+
+.register {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .logo-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .login-text {
+        font-size: 1.15rem;
+    }
+
+    .arrow {
+        font-size: 1.25rem;
+    }
+
+    .form-box {
+        padding: 20px;
+    }
+}
